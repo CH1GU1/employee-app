@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div >
+
+          Employee #{{index+1}} - {{employeeList.name}} {{employeeList.lastName}} {{employeeList.position}} {{employeeList.pay}}
+
+        </div>
+
+        <ul style="list-style: none;">
+          <li *ngFor="let feature of featuresArray">{{feature}}</li>
+        </ul>
+
+      </div>
+      <app-employee-features-c (employeesFeatures)="addFeature($event)"></app-employee-features-c>
+    </div>
+  </div>
