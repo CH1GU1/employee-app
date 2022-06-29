@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataEmployeesServiceService } from './data-employees-service.service';
 import { Employee } from './employee.model';
+import { EmployeesServiceService } from './employees-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Employees List';
   
   nameBox:string="";
@@ -14,19 +16,22 @@ export class AppComponent {
   positionBox:string="";
   payBox:number=0;
 
-  employees:Employee[] = [
+  employees:Employee[] = []; //Esto se debe dejar ya que hay un nfor que lo usa
 
-    new Employee("Kevin","Mera","Gerente",1000),
-    new Employee("Camilo","Valencia","Subgerente",800),
-    new Employee("Mariana","Ramirez","Directora",700),
-    new Employee("Laura","Lopez","Administrativo",550)
+  constructor(private empService:EmployeesServiceService, private dataEmpService:DataEmployeesServiceService){
+    //this.employees = this.dataEmpService.employees; //Esto tambien se puede poner dentro de la interfaz onInit
+  }
+  ngOnInit(): void {
+    this.employees = this.dataEmpService.employees;
+  }
 
-  ];
+
 
   addEmployee(){
 
     let myEmployee = new Employee(this.nameBox, this.lastNameBox, this.positionBox, this.payBox); //Recibir el empleado de los cuadros de texto
-    this.employees.push(myEmployee);
+    this.empService.showMessage("Employee Information \nName: "+ myEmployee.name + "\nLast Name: "+myEmployee.lastName + "\nPay: "+myEmployee.pay + "\nPosition: "+myEmployee.position);
+    this.dataEmpService.addEmployeeService(myEmployee);
   }
 
 
