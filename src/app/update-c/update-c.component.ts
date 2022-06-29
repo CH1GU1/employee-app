@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataEmployeesServiceService } from '../data-employees-service.service';
 import { Employee } from '../employee.model';
 import { EmployeesServiceService } from '../employees-service.service';
@@ -17,21 +17,33 @@ export class UpdateCComponent implements OnInit {
   payBox:number=0;
   employees:Employee[] = []; //Esto se debe dejar ya que hay un nfor que lo usa
 
-  constructor(private router:Router, private empService:EmployeesServiceService, private dataEmpService:DataEmployeesServiceService) { }
+  index:number;
+
+  constructor(private router:Router, private route:ActivatedRoute,private empService:EmployeesServiceService, private dataEmpService:DataEmployeesServiceService) { }
 
   ngOnInit(): void {
+    this.employees = this.dataEmpService.employees;
+    this.index = this.route.snapshot.params['id'];
+
+    let employee:Employee = this.dataEmpService.findEmployee(this.index);
+
+    this.nameBox = employee.name;
+    this.lastNameBox = employee.lastName;
+    this.payBox = employee.pay;
+    this.positionBox = employee.position;
   }
 
-  returnHome(){
-    this.employees = this.dataEmpService.employees;
+
+
+  returnHome(){  
     this.router.navigate(['']);
   }
 
-  addEmployee(){
+  updateEmployee(){
 
     let myEmployee = new Employee(this.nameBox, this.lastNameBox, this.positionBox, this.payBox); //Recibir el empleado de los cuadros de texto
     //this.empService.showMessage("Employee Information \nName: "+ myEmployee.name + "\nLast Name: "+myEmployee.lastName + "\nPay: "+myEmployee.pay + "\nPosition: "+myEmployee.position);
-    this.dataEmpService.addEmployeeService(myEmployee);
+    this.dataEmpService.updateEmployee(this.index, myEmployee);
     this.returnHome();
   }
 

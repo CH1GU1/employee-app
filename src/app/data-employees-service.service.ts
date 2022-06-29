@@ -25,4 +25,13 @@ export class DataEmployeesServiceService {
     this.alertService.showMessage("Employee Information \nName: "+ toAdd.name + "\nLast Name: "+toAdd.lastName + "\nPay: "+toAdd.pay + "\nPosition: "+toAdd.position);
     this.employees.push(toAdd);
   }
+
+  findEmployee(id:number){
+    let employeeFound:Employee = this.employees[id];
+    return employeeFound;
+  }
+
+  updateEmployee(id:number, empToUpdate:Employee){
+    this.employees[id] = empToUpdate;
+  }
 }
