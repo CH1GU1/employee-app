@@ -11,7 +11,8 @@ import { HomeCComponent } from './home-c/home-c.component';
 import { ProjectsCComponent } from './projects-c/projects-c.component';
 import { WhoareCComponent } from './whoare-c/whoare-c.component';
 import { ContactCComponent } from './contact-c/contact-c.component';
-import { RouterModule, Routes } from '@angular/router'; //Linea para importar el router module
+import { RouterModule, Routes } from '@angular/router';
+import { UpdateCComponent } from './update-c/update-c.component'; //Linea para importar el router module
 
 const appRoutes:Routes=[
   {path:'', component:HomeCComponent}, 
@@ -28,7 +29,8 @@ const appRoutes:Routes=[
     HomeCComponent,
     ProjectsCComponent,
     WhoareCComponent,
-    ContactCComponent
+    ContactCComponent,
+    UpdateCComponent
   ],
   imports: [
     BrowserModule, 
