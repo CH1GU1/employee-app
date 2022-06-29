@@ -18,7 +18,8 @@ const appRoutes:Routes=[
   {path:'', component:HomeCComponent}, 
   {path:'projects', component:ProjectsCComponent},
   {path:'whoare', component:WhoareCComponent},
-  {path:'contact', component:ContactCComponent}
+  {path:'contact', component:ContactCComponent},
+  {path:'update/:id', component:UpdateCComponent}
 ];
 
 @NgModule({

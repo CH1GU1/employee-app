@@ -2,9 +2,9 @@
     <div class="row">
       <div class="col">
         <div >
-
+          <a [routerLink]="['/update',index]">
           Employee #{{index+1}} - {{employeeList.name}} {{employeeList.lastName}} {{employeeList.position}} {{employeeList.pay}}
-
+        </a>
         </div>
 
         <ul style="list-style: none;">
