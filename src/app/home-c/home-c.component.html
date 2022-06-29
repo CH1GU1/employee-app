@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="col" style="text-align: center;"><h1>{{title}}</h1></div>
+    <br><br>
+  
+    <form class="form-group row">
+  
+      <div class="form-group col-md-3">
+  
+        <label for="name">Name:</label>
+        <input type="text" name = "Name" id="name" placeholder="Name" class="form-control"[(ngModel)]="nameBox"> 
+  
+      </div>
+  
+      <div class="form-group col-md-3">
+  
+        <label for="name">Last Name:</label>
+        <input type="text" name = "LastName" id="LastName" placeholder="Last Name" class="form-control"[(ngModel)]="lastNameBox"> 
+  
+      </div>
+  
+      <div class="form-group col-md-3">
+  
+        <label for="name">Position:</label>
+        <input type="text" name = "Position" id="position" placeholder="Position" class="form-control"[(ngModel)]="positionBox"> 
+  
+      </div>
+  
+      <div class="form-group col-md-3">
+  
+        <label for="name">Pay:</label>
+        <input type="text" name = "Pay" id="pay" placeholder="Pay" class="form-control"[(ngModel)]="payBox"> 
+  
+      </div>
+  
+      <div class="col">
+  
+        <button type="submit" class="btn btn-primary" (click)="addEmployee()" style="margin-top: 5%;">Add Employee</button>
+  
+      </div>
+  
+    </form>
+  </div>
+  
+  <br><br><br>
+  
+  <app-employee-child-c *ngFor="let employee of employees; let i = index" [employeeList]="employee" [index] = "i"></app-employee-child-c>
+  
+  
