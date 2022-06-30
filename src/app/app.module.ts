@@ -13,13 +13,17 @@ import { WhoareCComponent } from './whoare-c/whoare-c.component';
 import { ContactCComponent } from './contact-c/contact-c.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateCComponent } from './update-c/update-c.component'; //Linea para importar el router module
+import { CustomErrorCComponent } from './custom-error-c/custom-error-c.component';
+import { DataServiceService } from './data-service.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes:Routes=[
   {path:'', component:HomeCComponent}, 
   {path:'projects', component:ProjectsCComponent},
   {path:'whoare', component:WhoareCComponent},
   {path:'contact', component:ContactCComponent},
-  {path:'update/:id', component:UpdateCComponent}
+  {path:'update/:id', component:UpdateCComponent},
+  {path:'**',component:CustomErrorCComponent}
 ];
 
 @NgModule({
@@ -36,9 +40,10 @@ const appRoutes:Routes=[
   imports: [
     BrowserModule, 
     FormsModule,
-    RouterModule.forRoot(appRoutes) //Aqui tambien va el router module;
+    RouterModule.forRoot(appRoutes), //Aqui tambien va el router module;
+    HttpClientModule
   ],
-  providers: [EmployeesServiceService, DataEmployeesServiceService], //Aqui van los servicios que se creen
+  providers: [EmployeesServiceService, DataEmployeesServiceService, DataServiceService], //Aqui van los servicios que se creen
   bootstrap: [AppComponent]
 })
 export class AppModule { }

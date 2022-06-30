@@ -22,7 +22,11 @@ export class HomeCComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employees = this.dataEmpService.employees;
+    //this.employees = this.dataEmpService.employees;
+    this.dataEmpService.getEmployees().subscribe(myRealTimeEmployees=>{
+      this.employees = Object.values(myRealTimeEmployees); //Guarda los datos en el array empleados
+      this.dataEmpService.setEmployees(this.employees);
+    });
   }
 
   addEmployee(){
