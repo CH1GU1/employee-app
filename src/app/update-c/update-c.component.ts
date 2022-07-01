@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataEmployeesServiceService } from '../data-employees-service.service';
 import { Employee } from '../employee.model';
@@ -60,7 +61,7 @@ updateEmployee(){
   switch (this.action) {
     case 1:
       let myEmployee = new Employee(this.nameBox, this.lastNameBox, this.positionBox, this.payBox); //Recibir el empleado de los cuadros de texto
-      //this.empService.showMessage("Employee Information \nName: "+ myEmployee.name + "\nLast Name: "+myEmployee.lastName + "\nPay: "+myEmployee.pay + "\nPosition: "+myEmployee.position);
+      this.empService.showMessage("Employee Information \nName: "+ myEmployee.name + "\nLast Name: "+myEmployee.lastName + "\nPay: "+myEmployee.pay + "\nPosition: "+myEmployee.position);
       this.dataEmpService.updateEmployee(this.index, myEmployee);
       this.returnHome();
 

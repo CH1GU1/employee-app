@@ -42,10 +42,18 @@ export class DataEmployeesServiceService {
 
   updateEmployee(id:number, empToUpdate:Employee){
     this.employees[id] = empToUpdate;
+    console.log("Antes");
+    console.log(this.employees[id]);
+    this.dataService.updateEmployee(id, empToUpdate);
   }
 
   deleteEmployee(id:number){
     this.employees.splice(id,1); //Elimina el empleado
+    this.dataService.deleteEmployee(id);
+
+    if(this.employees!=null){
+    this.dataService.saveEmployees(this.employees);
+    }
   }
 
   getEmployees(){
